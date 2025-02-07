@@ -1,0 +1,14 @@
+openai-whisper
+mistralai
+requests-html==0.10.0
+accelerate==1.1.1
+tokenizers==0.20.3
+langchain==0.3.7
+langchain_community==0.3.7
+langchain_chroma==0.1.4
+langchain-huggingface==0.1.2
+fastapi
+python-multipart
+langchain_mistralai
+flask
+-e .
