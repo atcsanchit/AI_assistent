@@ -14,7 +14,7 @@ class CommandPipeline:
         try:
             mistral_obj = PredictionMistral()
             mistral_obj.load_model()
-            mistral_obj.predict_score(command=command)
+            return mistral_obj.predict_score(command=command)
 
         except Exception as e:
             logging.info(f"Error in command pipeline ---- {e}")

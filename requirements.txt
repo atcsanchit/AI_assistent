@@ -11,4 +11,5 @@ fastapi
 python-multipart
 langchain_mistralai
 flask
+uvicorn
 -e .
