@@ -73,7 +73,7 @@ PORT=your_port_number_here
 
 ## 🏗️ Project Structure
 
-```
+
 AI_assistent/
 ├── chatbot-server/      # Backend server handling AI interactions
 ├── electron-project/    # Electron-based desktop application
