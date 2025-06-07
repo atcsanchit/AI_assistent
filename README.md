@@ -129,9 +129,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-- **Issues**: [GitHub Issues](https://github.com/atcsanchit/AI_assistent/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/atcsanchit/AI_assistent/discussions)
-- **Email**: [your-email@example.com](mailto:your-email@example.com)
+- **Email**: [atcsanchit@gmail.com](mailto:your-email@example.com)
 
 ---
 
