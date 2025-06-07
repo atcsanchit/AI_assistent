@@ -22,7 +22,7 @@ A powerful and versatile AI assistant built to help with various tasks including
 
 - Python 3.8 or higher
 - pip package manager
-- API keys for AI services (OpenAI, Anthropic, etc.)
+- API keys for AI services (Deepgram, Mistral, etc.)
 
 ### Installation
 
@@ -45,6 +45,10 @@ cp .env.example .env
 
 4. Run the assistant:
 ```bash
+cd ../chatbot-server
+npm run start-dev
+cd electron-project
+npm start
 python main.py
 ```
 
@@ -54,137 +58,44 @@ Create a `.env` file in the root directory with the following variables:
 
 ```env
 # API Keys
-OPENAI_API_KEY=your_openai_api_key_here
-ANTHROPIC_API_KEY=your_anthropic_api_key_here
-
-# Configuration
-DEBUG=False
-LOG_LEVEL=INFO
-MAX_TOKENS=2000
-TEMPERATURE=0.7
+MISTRAL_API_KEY=your_mistral_api_key_here
+PORT=your_port_number_here
 ```
 
 ## 🛠️ Usage
 
-### Basic Usage
-
-```python
-from ai_assistant import AIAssistant
-
-# Initialize the assistant
-assistant = AIAssistant()
-
-# Ask a question
-response = assistant.ask("What's the weather like today?")
-print(response)
-
-# Start a conversation
-assistant.start_conversation()
-```
-
-### Command Line Interface
-
-```bash
-# Interactive mode
-python main.py --interactive
-
-# Single query
-python main.py --query "Explain quantum computing"
-
-# Voice mode
-python main.py --voice
-```
-
-### API Usage
-
-Start the API server:
-```bash
-python api_server.py
-```
-
-Make requests:
-```bash
-curl -X POST http://localhost:8000/chat \
-  -H "Content-Type: application/json" \
-  -d '{"message": "Hello, how can you help me?"}'
+- Start speaking after launching the assistant.
+- Your voice is converted to text (via Deepgram).
+- The text is processed by the LLM (Mistral or GPT-based model).
+- The assistant responds using TTS.
+- Responses and logs are printed on terminal / GUI.
 ```
 
 ## 🏗️ Project Structure
 
 ```
 AI_assistent/
-├── src/
-│   ├── ai_assistant/
-│   │   ├── __init__.py
-│   │   ├── core/
-│   │   │   ├── assistant.py
-│   │   │   ├── conversation.py
-│   │   │   └── memory.py
-│   │   ├── integrations/
-│   │   │   ├── openai_client.py
-│   │   │   ├── anthropic_client.py
-│   │   │   └── voice_handler.py
-│   │   ├── utils/
-│   │   │   ├── config.py
-│   │   │   ├── logger.py
-│   │   │   └── helpers.py
-│   │   └── api/
-│   │       ├── routes.py
-│   │       └── models.py
-├── tests/
-│   ├── test_assistant.py
-│   ├── test_integrations.py
-│   └── test_api.py
-├── docs/
-│   ├── api_reference.md
-│   ├── configuration.md
-│   └── examples/
-├── requirements.txt
-├── .env.example
-├── .gitignore
-├── main.py
-├── api_server.py
-└── README.md
+├── chatbot-server/      # Backend server handling AI interactions
+├── electron-project/    # Electron-based desktop application
+├── notebook/            # Jupyter notebooks for experimentation
+├── src/                 # Source code for core functionalities
+├── main.py              # Entry point for the application
+├── requirements.txt     # Python dependencies
+├── setup.py             # Setup script for installation
+├── output_6799.wav      # Sample audio output
+└── README.md            # Project documentation
+
 ```
 
-## 🔧 Advanced Features
+## 🧰 Tech Stack
 
-### Custom Plugins
-
-Create custom plugins by extending the base plugin class:
-
-```python
-from ai_assistant.plugins import BasePlugin
-
-class WeatherPlugin(BasePlugin):
-    def __init__(self):
-        super().__init__("weather")
-    
-    def execute(self, query):
-        # Your weather logic here
-        return weather_data
-```
-
-### Voice Commands
-
-Enable voice interaction:
-
-```python
-assistant = AIAssistant(voice_enabled=True)
-assistant.listen_and_respond()
-```
-
-### Memory Management
-
-The assistant maintains conversation context:
-
-```python
-# Enable persistent memory
-assistant = AIAssistant(memory_enabled=True)
-
-# Clear conversation history
-assistant.clear_memory()
-```
+- Python
+- FastAPI – backend server
+- WebSockets – real-time communication
+- Deepgram – speech-to-text
+- Mistral / GPT models – LLM response
+- gTTS / pyttsx3 – text-to-speech
+- Electron.js – GUI
 
 ## 📊 Performance
 
@@ -192,28 +103,6 @@ assistant.clear_memory()
 - **Memory Usage**: ~200MB base memory footprint
 - **Concurrent Users**: Supports up to 100 concurrent API requests
 - **Token Efficiency**: Optimized prompts for cost-effective API usage
-
-## 🧪 Testing
-
-Run the test suite:
-
-```bash
-# Run all tests
-python -m pytest
-
-# Run with coverage
-python -m pytest --cov=ai_assistant
-
-# Run specific test file
-python -m pytest tests/test_assistant.py
-```
-
-## 📚 Documentation
-
-- [API Reference](docs/api_reference.md)
-- [Configuration Guide](docs/configuration.md)
-- [Plugin Development](docs/plugin_development.md)
-- [Examples](docs/examples/)
 
 ## 🤝 Contributing
 
@@ -233,8 +122,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
-- OpenAI for GPT models
-- Anthropic for Claude models
+- MistralAI for GPT models
+- Deepgram for Speech-to-Text conversions
 - The open-source AI community
 - Contributors and testers
 
@@ -243,23 +132,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Issues**: [GitHub Issues](https://github.com/atcsanchit/AI_assistent/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/atcsanchit/AI_assistent/discussions)
 - **Email**: [your-email@example.com](mailto:your-email@example.com)
-
-## 🔄 Changelog
-
-### v1.0.0 (Latest)
-- Initial release
-- Basic AI assistant functionality
-- API integration support
-- Voice interaction capabilities
-
-### v0.2.0
-- Added plugin system
-- Improved memory management
-- Performance optimizations
-
-### v0.1.0
-- Project initialization
-- Core assistant features
 
 ---
 
