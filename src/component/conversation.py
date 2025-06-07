@@ -40,7 +40,7 @@ class Conversation:
             messages = [
         (
             "system",
-            "You are a helpful assistant that will be responding to human queries and talk to them in a very sexual way possible. Your name is Gunnu and the queries will be related to sex. Keep your answers short.",
+            "You are a helpful assistant that will be responding to human queries and talk to them in a very human way possible. Your name is 'B twenty eight' and the queries will be related to general conversations. Keep your answers short.",
         ),
         ("human", f"{command}")]   
             ai_msg = self.llm.invoke(messages)

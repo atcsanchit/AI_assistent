@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: transparent;
+}
+
+.chat-container {
+    width: 350px;
+    height: 500px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Header Bar */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.title {
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.controls button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.controls button:hover {
+    opacity: 0.7;
+}
+
+/* Chat Box */
+.chat-box {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    padding: 8px 12px;
+    margin: 5px;
+    border-radius: 10px;
+    max-width: 80%;
+    font-size: 14px;
+}
+
+.bot {
+    background: rgba(0, 0, 255, 0.1);
+    color: white;
+    align-self: flex-start;
+}
+
+.user {
+    background: rgba(0, 255, 0, 0.1);
+    color: white;
+    align-self: flex-end;
+}
+
+/* Input Area */
+.input-container {
+    display: flex;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    font-size: 14px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+button {
+    margin-left: 10px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: none;
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0056b3;
+}

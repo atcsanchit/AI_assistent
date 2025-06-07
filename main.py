@@ -19,15 +19,16 @@ app = FastAPI()
 class MappingRequest(BaseModel):
     command: str
 
-
 @app.get("/")
 async def xyz():
     return {"hard coding is good":"but not cool!"}
 
 @app.post("/submit")
 async def abc(mapping: MappingRequest):
-    mapping = mapping.dict()  # Convert Pydantic model to dictionary
-    command = mapping["command"]
+    print(f"Raw mapping: {mapping}")
+    print(f"As dict: {mapping.dict()}")
+    data = mapping.dict()
+    command = data["command"]
     print(command)
     class_classification_obj = ClassClassification()
     class_classification_obj.load_model()
@@ -46,10 +47,11 @@ async def abc(mapping: MappingRequest):
         main_obj.text_to_speech(text = result, speaker_id=6799)
         base64_encoding = main_obj.audio_to_base64(audio_file_path="output_6799.wav")
     
-    
-    return {"class": classify,
+    response_return = {"class": classify.lower(),
         "response": result,
         "payload": base64_encoding}
+    # print(f"response ----- {response_return}")
+    return response_return
 
 @app.get("/test")
 async def random(name:str):
